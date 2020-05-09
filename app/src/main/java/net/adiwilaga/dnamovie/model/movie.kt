@@ -1,5 +1,6 @@
 package net.adiwilaga.dnamovie.model
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 
 data class movie(
@@ -31,4 +32,4 @@ data class movie(
     val voteAverage: Double,
     @SerializedName("vote_count")
     val voteCount: Int
-)
+): Serializable

@@ -7,6 +7,7 @@ import io.reactivex.Observable
 import net.adiwilaga.dnamovie.model.baselistresponse
 import net.adiwilaga.dnamovie.model.genreresponse
 import net.adiwilaga.dnamovie.model.movie
+import net.adiwilaga.dnamovie.model.moviedetail
 import okhttp3.*
 import okhttp3.logging.HttpLoggingInterceptor
 import okio.Buffer
@@ -207,12 +208,14 @@ interface api {
     @GET("/3/discover/movie")
     fun getMovie(@Query("sort_by")sort_by: String,
                          @Query("api_key")api_key: String,
+                         @Query("with_genres")with_genres: String,
                          @Query("page")page: String): Observable<baselistresponse<movie>>
     @GET("/3/genre/movie/list")
     fun getGenre(@Query("api_key")api_key: String): Observable<genreresponse>
 
 
-
+    @GET("/3/movie/{id}}")
+    fun getMovieDetail(@Path("id")mid:Int,@Query("api_key")api_key: String): Observable<moviedetail>
 
 
 

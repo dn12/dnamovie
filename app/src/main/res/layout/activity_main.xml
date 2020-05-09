@@ -8,8 +8,31 @@
     android:background="@color/black"
     tools:context=".view.activity.MainActivity">
 
+    <LinearLayout
+        android:padding="@dimen/dp10"
+        android:id="@+id/llgenre"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="@string/genre"
+            android:layout_marginRight="@dimen/dp10"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Spinner
+            android:background="@color/white"
+            android:id="@+id/spgenre"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp30"/>
+
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@id/llgenre"
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

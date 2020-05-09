@@ -27,6 +27,7 @@ open class BaseActivity : AppCompatActivity() {
 
     fun ShowLoadingDialog() {
         try {
+            if(dialog==null || !dialog!!.isShowing)
             dialog = ProgressDialog.show(ctx, "Loading", "Please Wait..")
         } catch (e: Exception) {
         }

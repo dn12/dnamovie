@@ -3,4 +3,5 @@
     <dimen name="imagelistsizewidth">100dp</dimen>
     <dimen name="imagelistsizeheight">150dp</dimen>
     <dimen name="dp10">10dp</dimen>
+    <dimen name="dp30">30dp</dimen>
 </resources>

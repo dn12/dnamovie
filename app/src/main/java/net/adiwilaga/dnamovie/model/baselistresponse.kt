@@ -1,5 +1,6 @@
 package net.adiwilaga.dnamovie.model
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 
 data class baselistresponse<T>(
@@ -11,4 +12,4 @@ data class baselistresponse<T>(
     val totalPages: Int,
     @SerializedName("total_results")
     val totalResults: Int
-)
+): Serializable
