@@ -38,7 +38,6 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
         presenter= MoviePresenter(APIServices)
         lsMovie=ArrayList()
         lsGenre=ArrayList()
@@ -46,7 +45,7 @@ class MainActivity : BaseActivity() {
 
         adp= MovieListAdapter(lsMovie,lsGenre,this,object:ItemClickListener<movie>{
             override fun onItemClicked(res: movie) {
-                gotoDetail(res.id)
+                gotoDetail(res)
 
             }
 
@@ -110,7 +109,7 @@ class MainActivity : BaseActivity() {
     }
 
     fun getMovie(){
-        if(!onload) {
+        if(!onload && page>0) {
             onload=true
             ShowLoadingDialog()
 
@@ -143,13 +142,14 @@ class MainActivity : BaseActivity() {
     }
 
 
-    fun gotoDetail(mid:Int){
+    fun gotoDetail(mov:movie){
 
         ShowLoadingDialog()
-        presenter.getMovieDetail(mid,object :DataObjectInterface<moviedetail>{
+        presenter.getMovieDetail(mov.id,object :DataObjectInterface<moviedetail>{
             override fun onGetDataSuccess(res: moviedetail) {
                 DismisLoadingDialog()
                 var ii= Intent(ctx, MovieDetailActivity::class.java)
+                res.sgenre=mov.sgenre
                 ii.putExtra("movie",res)
                 startActivity(ii)
 

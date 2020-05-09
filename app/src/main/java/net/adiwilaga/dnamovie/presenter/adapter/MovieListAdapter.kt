@@ -38,8 +38,8 @@ class MovieListAdapter(val items: ArrayList<movie>,val genres: ArrayList<genre>,
         val n=items.get(position)
 
         holder.ttitle.text=n.title
-        holder.tgenre.text=n.genreIds.toString()
         holder.trate.text="Rate : ${n.voteAverage}"
+        holder.trate.text="Release Date : ${n.releaseDate}"
 
         var gen=""
         for (i in n.genreIds){
@@ -53,8 +53,11 @@ class MovieListAdapter(val items: ArrayList<movie>,val genres: ArrayList<genre>,
 
 
         }
-        if (gen.length>2)
-        holder.tgenre.text=gen.substring(0,gen.length-2)
+        if (gen.length>2) {
+            var sgenre = gen.substring(0, gen.length - 2)
+            holder.tgenre.text = sgenre
+            n.sgenre ="Genre: $sgenre"
+        }
 
         if(!n.posterPath.isNullOrEmpty()){
             Glide.with(context).load("https://image.tmdb.org/t/p/w220_and_h330_face/${n.posterPath}").into(holder.img)
@@ -82,5 +85,6 @@ class MovieView(view: View) : RecyclerView.ViewHolder(view) {
     var ttitle = view.findViewById<TextView>(R.id.ttitle)
     var trate = view.findViewById<TextView>(R.id.trate)
     var tgenre = view.findViewById<TextView>(R.id.tgenre)
+    var trelease = view.findViewById<TextView>(R.id.trelease)
     var img = view.findViewById<ImageView>(R.id.img)
 }

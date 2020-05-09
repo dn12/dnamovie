@@ -44,7 +44,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
-
+    <TextView
+        android:layout_marginTop="@dimen/dp10"
+        android:layout_toRightOf="@id/img"
+        android:layout_below="@id/tgenre"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:id="@+id/trelease"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
     
 </RelativeLayout>

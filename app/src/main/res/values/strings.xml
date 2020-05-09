@@ -1,4 +1,9 @@
 <resources>
-    <string name="app_name">dnamovie</string>
+    <string name="app_name">DnA Movie</string>
     <string name="genre">Genre</string>
+    <string name="overview">OVERVIEW</string>
+    <string name="userreview">User Review</string>
+    <string name="trailer">Trailer / Video</string>
+    <string name="reviews">Reviews</string>
+    <string name="videos">Videos</string>
 </resources>

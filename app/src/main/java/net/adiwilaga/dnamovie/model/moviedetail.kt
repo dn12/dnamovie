@@ -53,7 +53,8 @@ data class moviedetail(
     @SerializedName("vote_average")
     val voteAverage: Double,
     @SerializedName("vote_count")
-    val voteCount: Int
+    val voteCount: Int,
+    var sgenre:String
 ):Serializable
 
 data class BelongsToCollection(

@@ -7,12 +7,13 @@
     <application
         android:name=".dnamovieApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/themoviedbcion"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.activity.MovieDetailActivity"></activity>
+        <activity android:name=".view.activity.ReviewsActivity"/>
+        <activity android:name=".view.activity.VideoListActivity" />
+        <activity android:name=".view.activity.MovieDetailActivity" />
         <activity android:name=".view.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

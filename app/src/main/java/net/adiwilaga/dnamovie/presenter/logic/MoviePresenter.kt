@@ -7,9 +7,7 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import net.adiwilaga.dnamovie.API.api
 import net.adiwilaga.dnamovie.dnamovieApplication
-import net.adiwilaga.dnamovie.model.genre
-import net.adiwilaga.dnamovie.model.movie
-import net.adiwilaga.dnamovie.model.moviedetail
+import net.adiwilaga.dnamovie.model.*
 
 
 class MoviePresenter{
@@ -36,6 +34,8 @@ class MoviePresenter{
                     var ipage = res.page
                     if (res.totalPages > res.page)
                         ipage++
+                    else
+                        ipage=0
 
                     lst.onGetDataSuccess(res.results, ipage)
                 }else
@@ -79,6 +79,53 @@ class MoviePresenter{
                 if(res.genres.size>0)
                     lst.onGetDataSuccess(res.genres,0)
                 else
+                    lst.onGetDataFailed("No Data Available")
+
+            },{  error->
+                if(!error.message.isNullOrEmpty())
+                    lst.onGetDataFailed(error.message!!)
+                else
+                    lst.onGetDataFailed("Service Error")
+            })
+    }
+    fun getMovieVideo(mid:Int,lst:DataListInterface<video>) {
+
+
+
+        disposable=APIServices.getMovieVideo(mid, dnamovieApplication.APIKEY)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({res->
+
+
+                lst.onGetDataSuccess(res.results,0)
+
+            },{  error->
+                if(!error.message.isNullOrEmpty())
+                    lst.onGetDataFailed(error.message!!)
+                else
+                    lst.onGetDataFailed("Service Error")
+            })
+    }
+    fun getMovieReview(mid:Int,page: Int, lst:DataListInterface<review>) {
+
+
+
+        disposable=APIServices.getMovieReview(mid, dnamovieApplication.APIKEY,page.toString())
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({res->
+
+
+                if(res.results.size>0) {
+                    var ipage = res.page
+                    if (res.totalPages > res.page)
+                        ipage++
+                    else
+                        ipage=0
+
+                    lst.onGetDataSuccess(res.results, ipage)
+                }else
                     lst.onGetDataFailed("No Data Available")
 
             },{  error->

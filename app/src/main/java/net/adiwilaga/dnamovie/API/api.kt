@@ -4,10 +4,7 @@ package net.adiwilaga.dnamovie.API
 import android.util.Log
 
 import io.reactivex.Observable
-import net.adiwilaga.dnamovie.model.baselistresponse
-import net.adiwilaga.dnamovie.model.genreresponse
-import net.adiwilaga.dnamovie.model.movie
-import net.adiwilaga.dnamovie.model.moviedetail
+import net.adiwilaga.dnamovie.model.*
 import okhttp3.*
 import okhttp3.logging.HttpLoggingInterceptor
 import okio.Buffer
@@ -214,9 +211,14 @@ interface api {
     fun getGenre(@Query("api_key")api_key: String): Observable<genreresponse>
 
 
-    @GET("/3/movie/{id}}")
+    @GET("/3/movie/{id}")
     fun getMovieDetail(@Path("id")mid:Int,@Query("api_key")api_key: String): Observable<moviedetail>
 
+    @GET("/3/movie/{id}/videos")
+    fun getMovieVideo(@Path("id")mid:Int,@Query("api_key")api_key: String): Observable<baselistresponse<video>>
+
+    @GET("/3/movie/{id}/reviews")
+    fun getMovieReview(@Path("id")mid:Int,@Query("api_key")api_key: String,@Query("page")page: String): Observable<baselistresponse<review>>
 
 
     companion object {
