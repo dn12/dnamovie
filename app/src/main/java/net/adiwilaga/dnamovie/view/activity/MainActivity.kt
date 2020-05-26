@@ -12,6 +12,7 @@ import id.co.xl.sisternet.presenter.viewinterface.DataListInterface
 import id.co.xl.sisternet.presenter.viewinterface.DataObjectInterface
 import id.co.xl.sisternet.presenter.viewinterface.ItemClickListener
 import kotlinx.android.synthetic.main.activity_main.*
+import net.adiwilaga.dnamovie.BuildConfig
 import net.adiwilaga.dnamovie.R
 import net.adiwilaga.dnamovie.model.genre
 import net.adiwilaga.dnamovie.model.movie
@@ -106,6 +107,8 @@ class MainActivity : BaseActivity() {
             }
 
         }
+
+
     }
 
     fun getMovie(){

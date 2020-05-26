@@ -21,6 +21,20 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    flavorDimensions "version"
+    productFlavors {
+
+        dev {
+            buildConfigField "String", "api", '"ini developement"'
+        }
+
+        qa {
+            buildConfigField "String", "DA", '"ini QA"'
+        }
+        prod {
+            buildConfigField "String", "DA", '"ini production"'
+        }
+    }
 }
 
 dependencies {
